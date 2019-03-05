@@ -8,7 +8,7 @@ class ZapierService {
     }
 
     async save ({ name, token, email, adAccount, page }) {
-        await this._zapierApiDataService.save({ token, email, adAccount, page });
+        await this._zapierApiDataService.save({ name, token, email, adAccount, page });
     }
 }
 
