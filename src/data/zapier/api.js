@@ -7,7 +7,20 @@ class ZapierApiDataService {
         this.ZAPIER_WEBHOOK_URL = config.zapier.webhookUrl;
     }
     async save ({ name, token, email, adAccount, page }) {
-        // TODO: zapier call
+        return request({
+            method: 'POST',
+            uri: this.ZAPIER_WEBHOOK_URL,
+            body: {
+                name,
+                token,
+                email,
+                adAccountName: adAccount.name,
+                adAccountId: adAccount.id,
+                pageName: page.name,
+                pageId: page.id,
+            },
+            json: true,
+        })
     }
 }
 
