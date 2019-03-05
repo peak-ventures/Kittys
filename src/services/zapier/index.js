@@ -7,8 +7,8 @@ class ZapierService {
         this._zapierApiDataService = new ZapierApiDataService();
     }
 
-    async save ({ name, token, email, adAccount, page }) {
-        return this._zapierApiDataService.save({ name, token, email, adAccount, page });
+    async save ({ fbUserId, name, token, email, adAccount, page }) {
+        return this._zapierApiDataService.save({ fbUserId, name, token, email, adAccount, page });
     }
 }
 

@@ -6,10 +6,10 @@ const save = async (req, res) => {
         return res.status(400).send('Body is required');
     }
 
-    const { name, token, email, adAccount, page } = req.body;
+    const { name, token, email, adAccount, page, fbUserId } = req.body;
     try {
         const zapierService = new ZapierService();
-        await zapierService.save({ name, token, email, adAccount, page });
+        await zapierService.save({ fbUserId, name, token, email, adAccount, page });
         return res.status(200).send();
     } catch (e) {
         return res.status(400).send('Error saving data to zapier');
