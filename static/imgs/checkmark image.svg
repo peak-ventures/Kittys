@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="65px" height="80px" viewBox="0 0 65 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>checkmark image</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="checkmark-image" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(3.000000, 3.000000)" stroke-width="5">
+            <path d="M34.9579128,72.1691793 C17.8072266,78.1904558 10.4811036,68.8482244 4.47886536,51.642539 C-1.52337288,34.4368536 -3.92853472,15.8831055 13.2223607,9.8616192 C30.3730469,3.84034268 49.1420934,12.9070868 55.1443316,30.1127722 C61.1463607,47.3184576 52.1085991,66.1479028 34.9579128,72.1691793 Z" id="Stroke-5" stroke="#61A9FF"></path>
+            <g id="Group-7-Copy" transform="translate(19.000000, 0.000000)" stroke="#333333" stroke-linecap="round">
+                <path d="M0,31.714054 L14.2008401,54.6560325 C14.2502431,54.7358451 14.354993,54.760497 14.4348056,54.711094 C14.4725728,54.6877166 14.4996877,54.6504831 14.5103461,54.6073639 C20.0408714,32.2331654 28.5374227,14.0307107 40,0" id="Path-5-Copy"></path>
+            </g>
+        </g>
+    </g>
+</svg>
