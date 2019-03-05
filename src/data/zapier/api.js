@@ -6,7 +6,7 @@ class ZapierApiDataService {
     constructor () {
         this.ZAPIER_WEBHOOK_URL = config.zapier.webhookUrl;
     }
-    async save ({ fbUserId, name, token, email, adAccount, page }) {
+    async save ({ userId, name, token, email, adAccount, page }) {
         return request({
             method: 'POST',
             uri: this.ZAPIER_WEBHOOK_URL,
@@ -14,7 +14,7 @@ class ZapierApiDataService {
                 name,
                 token,
                 email,
-                fbUserId,
+                userId,
                 adAccountName: adAccount.name,
                 adAccountId: adAccount.id,
                 pageName: page.name,
