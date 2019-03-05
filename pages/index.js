@@ -24,7 +24,7 @@ const modalStyles = {
 };
 
 const Check = () => (
-    <svg width="65px" height="80px" viewBox="0 0 65 80">
+    <svg width="65px" height="80px" viewBox="0 0 65 80" style={{ marginRight: '15px' }}>
         <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
             <g transform="translate(3.000000, 3.000000)" strokeWidth="5">
                 <path d="M34.9579128,72.1691793 C17.8072266,78.1904558 10.4811036,68.8482244 4.47886536,51.642539 C-1.52337288,34.4368536 -3.92853472,15.8831055 13.2223607,9.8616192 C30.3730469,3.84034268 49.1420934,12.9070868 55.1443316,30.1127722 C61.1463607,47.3184576 52.1085991,66.1479028 34.9579128,72.1691793 Z" stroke="#61A9FF" />
@@ -36,12 +36,19 @@ const Check = () => (
     </svg>
 );
 const Star = () => (
-    <svg width="54px" height="56px" viewBox="0 0 54 56">
-        <g id="star-image" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+    <svg width="54px" height="56px" viewBox="0 0 54 56" style={{ marginRight: '15px' }}>
+        <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
             <g id="Group-10-Copy" transform="translate(2.000000, 2.000000)">
                 <path d="M24.3800166,0.439212495 L16.2150004,15.9190646 C15.9763585,16.3714998 15.5357792,16.6825624 15.029566,16.756018 L0.682322718,18.8379177 C0.24507436,18.9013659 -0.0579505144,19.3072607 0.00549771772,19.7445091 C0.0265023984,19.8892611 0.0867902097,20.0254843 0.179805898,20.1383667 L10.7714946,32.9922764 C11.1330639,33.4310713 11.2346084,34.0287866 11.0382341,34.5623693 L5.01887864,50.9179895 C4.86627925,51.3326282 5.07870407,51.7924655 5.49334275,51.9450649 C5.71135321,52.0252992 5.95347365,52.0068063 6.15676987,51.8943929 L24.3848684,41.8151032 C24.8834064,41.5394349 25.4909179,41.5496345 25.9799211,41.8418828 L42.739018,51.8578061 C43.1182763,52.0844665 43.6094705,51.9607613 43.8361308,51.581503 C43.9530551,51.38586 43.9809796,51.1496331 43.9128948,50.9321201 L38.761533,34.4748768 C38.6092271,33.9882995 38.6979406,33.4582661 39.0003875,33.0478024 L49.8463337,18.3282986 C50.1084255,17.9726025 50.0325442,17.4717865 49.6768481,17.2096948 C49.5447339,17.1123475 49.3858783,17.0579848 49.2218216,17.053978 L33.2926792,16.6649393 C32.6514548,16.6492786 32.0815574,16.2521961 31.8447657,15.656089 L25.8311063,0.517107621 C25.6679965,0.106489786 25.2028984,-0.0941551436 24.7922806,0.0689546286 C24.615139,0.139320602 24.4689416,0.270621721 24.3800166,0.439212495 Z" id="Path-24" stroke="#333333" strokeWidth="4" />
                 <path d="M29.9953904,27.6172595 C30.0999169,30.2657214 28.4198654,30.8871501 25.6607026,30.9874828 C22.9015715,31.0878461 20.1081809,30.6290731 20.0036544,27.9806112 C19.8990961,25.3321798 22.0510582,23.1038405 24.8102528,23.0035077 C27.5693839,22.9031444 29.8908639,24.9687977 29.9953904,27.6172595 Z" id="Stroke-3-Copy" stroke="#FFE861" strokeWidth="5" />
             </g>
+        </g>
+    </svg>
+);
+const BlueUnderline = () => (
+    <svg width="229px" height="16px" viewBox="0 0 676 16" style={{ position: 'absolute', left: 0, bottom: '-10px' }}>
+        <g stroke="none" fill="none" fillRule="evenodd" strokeLinecap="round">
+            <path d="M3,11.8887114 C70.1766859,13.483075 219.630306,-2.70947677 401,5.17809831 C459.365954,7.71637159 550.032621,7.71637159 673,5.17809831" id="Path-21-Copy-7" stroke="#61A9FF" strokeWidth="15" transform="translate(338.000000, 7.500000) scale(1, -1) translate(-338.000000, -7.500000)" />
         </g>
     </svg>
 );
@@ -52,15 +59,15 @@ const RedUnderline = ({ className }) => (
         </g>
     </svg>
 );
-const YellowUnderline = ({ className }) => (
-    <svg width="229px" height="16px" viewBox="0 0 678 16" className={className ? className : ''}>
+const YellowUnderline = () => (
+    <svg width="229px" height="16px" viewBox="0 0 678 16" style={{ bottom: '-19px', position: 'absolute', left: 0 }}>
         <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd" strokeLinecap="round">
             <path d="M3,7.58386265 C10.6477456,7.89773788 18.2114694,8.60945766 25.6911713,9.71902198 C46.5516065,12.8135296 107.940408,12.4267162 209.857577,8.55858162 C336.747066,1.48769423 431.800185,1.16278791 495.016935,7.58386265 C558.233685,14.0049374 618.22804,14.7166572 675,9.71902198" stroke="#FFE861" strokeWidth="15" />
         </g>
     </svg>
 );
 const DashedUnderline = () => (
-    <svg width="537px" height="2px" viewBox="0 0 537 2">
+    <svg width="537px" height="2px" viewBox="0 0 537 2" style={{ position: 'absolute', bottom: 0, marginRight: '15px' }}>
         <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd" strokeDasharray="4,9">
             <path d="M0,1 L540,1" stroke="#333333" />
         </g>
@@ -215,9 +222,13 @@ export default () => {
                 padding: 0;
             }
 
+            .button {
+                outline: none;
+            }
+
             .modal ul li button {
                 border: none;
-                outline: 0;
+                outline: none;
                 padding: 5px 15px;
                 -webkit-border-radius: 5px;
                 -moz-border-radius: 5px;
@@ -296,6 +307,13 @@ export default () => {
                 margin-bottom: 23px;
             }
 
+            .cta input:focus {
+                font-weight: bold;
+                outline: none;
+                box-shadow: none;
+                border: 1px solid #61a9ff;
+            }
+
             .cta.dark input {
                 background: #fff;
             }
@@ -308,6 +326,7 @@ export default () => {
                 -webkit-border-radius: 34px;
                 -moz-border-radius: 34px;
                 border-radius: 34px;
+                outline: none;
                 width: 100%;
                 box-sizing: border-box;
                 -webkit-box-shadow: 2px 2px 0 0 #e2574a;
@@ -347,6 +366,11 @@ export default () => {
                 bottom: 0;
             }
 
+            section.qualify,
+            section.craft {
+                overflow: hidden
+            }
+
             section.freeSession,
             section.qualify,
             section.cta.dark,
@@ -362,6 +386,10 @@ export default () => {
             section.getStarted {
                 background: #fff;
                 padding: 15px 25px;
+            }
+
+            section.craft h2 {
+                position: relative;
             }
 
             section ul {
@@ -416,6 +444,10 @@ export default () => {
             }
 
             section.freeSession {
+                position: relative;
+            }
+
+            section.freeSession h1 {
                 position: relative;
             }
 
@@ -501,7 +533,7 @@ export default () => {
 
             .quality-img {
                 position: absolute;
-                bottom: 0;
+                bottom: -8px;
                 left: -25px;
             }
         `}</style>
@@ -585,6 +617,9 @@ export default () => {
             </section>
 
             <section className="freeSession">
+                <svg width="132" height="127" viewBox="0 0 132 127">
+                    <path fill="none" stroke="#61A9FF" strokeWidth="3" d="M42.35 113.926C6.528 97.977-5.837 74.371 7.672 44.031 21.18 13.691 55.66-10.409 100.7 9.644c45.04 20.054 50.203 61.803 36.694 92.144-13.508 30.34-59.223 28.087-95.045 12.138z"/>
+                </svg>
                 <h1>Get a Free Session With a Top Facebook Expert</h1>
                 <p>Starting with a a $10,000 Facebook credit in 2013, Demetrius built a multi-million dollar budget at
                     Shopify through results. Along the way he tried many agencies for support, but found that few truly
@@ -592,10 +627,6 @@ export default () => {
                 <p>So, he founded Kittys – an agency that creates strategies that embrace what makes social marketing
                     unique. With billions of impressions to his name, you won’t find many Facebook marketers with a greater
                     depth of experience and insight.</p>
-                <svg width="132" height="127" viewBox="0 0 132 127">
-                    <path fill="none" stroke="#61A9FF" strokeWidth="3"
-                          d="M42.35 113.926C6.528 97.977-5.837 74.371 7.672 44.031 21.18 13.691 55.66-10.409 100.7 9.644c45.04 20.054 50.203 61.803 36.694 92.144-13.508 30.34-59.223 28.087-95.045 12.138z"/>
-                </svg>
             </section>
 
             <section className="qualify">
@@ -605,11 +636,12 @@ export default () => {
                 <ul>
                     <li>
                         <Check />
-                        <div>Spent over 1 Million Dollars on Facebook in 2018<DashedUnderline /></div>
+                        <div style={{ paddingBottom: '10px' }}>
+                            Spent over 1 Million Dollars on Facebook in 2018<DashedUnderline /></div>
                     </li>
                     <li>
                         <Check />
-                        <div>Advertised on Facebook for at least 6 months
+                        <div style={{ paddingBottom: '10px' }}>Advertised on Facebook for at least 6 months
                             <DashedUnderline />
                         </div>
                     </li>
@@ -661,11 +693,10 @@ export default () => {
             </section>
 
             <section className="craft">
-                <h2>Crafted Results</h2>
+                <h2>Crafted Results<YellowUnderline /></h2>
                 <p>Does it feel like your agency isn’t invested in you? Kittys strives to be an extension of your team. We
                     understand your funnel, we reflect your values in our creative, and we care about your results. Everyone
                     wins when you grow.</p>
-                <Star />
                 <ul>
                     <li>
                         <Star />
@@ -682,7 +713,7 @@ export default () => {
             </section>
 
             <section className="getStarted dark">
-                <h2>Get Started<YellowUnderline className="getstarted-img"/></h2>
+                <h2>Get Started<BlueUnderline /></h2>
                 <p>To verify you meet the qualifications for a free consultation, connect your account to our analysis tool. We’ll be in touch if you qualify!</p>
             </section>
 
