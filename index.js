@@ -2,6 +2,7 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const path = require('path');
 const next = require('next');
 const url = require('url');
@@ -47,6 +48,7 @@ if (!DEV && cluster.isMaster) {
             }
 
             // Middleware
+            app.use(cors());
             app.use(bodyParser.urlencoded({ extended: true }));
             app.use(bodyParser.json());
 
@@ -55,8 +57,7 @@ if (!DEV && cluster.isMaster) {
                 maxAge: DEV ? '0' : '365d'
             }));
 
-            // Example server-side routing
-            require('./src/routes')(app);
+            require('./src/routes/v1')(app);
 
             // Default catch-all renders Next app
             app.get('*', (req, res) => {
