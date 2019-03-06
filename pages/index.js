@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import { Formik } from 'formik';
 import * as yup from 'yup';
-import { getAdAccounts, getPages, savePage } from '../network';
+import { getConfig, getAdAccounts, getPages, savePage } from '../network';
 import FacebookLogin from 'react-facebook-login'
 
 const initial = { email: '' };
@@ -19,7 +19,10 @@ const modalStyles = {
         right: 'auto',
         bottom: 'auto',
         marginRight: '-50%',
-        transform: 'translate(-50%, -50%)'
+        transform: 'translate(-50%, -50%)',
+        width: '100%',
+        maxWidth: '300px',
+        textAlign: 'center'
     }
 };
 
@@ -80,34 +83,31 @@ const FacebookAuthButton = ({ setAdAccount }) => {
             console.warn('Facebook Response', response);
 
             // Store in localStorage
-            localStorage.setItem('token', 'random-response-token-123456789');
-            localStorage.setItem('name', 'Bob Marley');
-            localStorage.setItem('userId', 123456789);
+            localStorage.setItem('token', response.accessToken);
+            localStorage.setItem('name', response.name);
+            localStorage.setItem('userId', response.userID);
 
             // Use email + token to get ad accounts
             const adAccounts = await getAdAccounts(
                 localStorage.getItem('email'),
-                localStorage.getItem('token')
+                response.accessToken
             );
+
+            // Data needs to look like this
+            // [
+            //     { id: 1, name: 'Kittys Ad Account 1' },
+            //     { id: 1, name: 'Kittys Ad Account 2' },
+            //     { id: 1, name: 'Kittys Ad Account 3' },
+            // ]
             setAdAccount(adAccounts);
         } catch (err) {
             console.warn('Could not fetch ad accounts')
         }
-
-        // Debugger
-        localStorage.setItem('token', 'random-response-token-123456789');
-        localStorage.setItem('name', 'Bob Marley');
-        localStorage.setItem('userId', 123456789);
-        setAdAccount([
-            { id: 1, name: 'Kittys Ad Account 1' },
-            { id: 1, name: 'Kittys Ad Account 2' },
-            { id: 1, name: 'Kittys Ad Account 3' },
-        ]);
     };
 
     return (
         <FacebookLogin
-            appId="1088597931155576"
+            appId="1860355937552252"
             autoLoad={true}
             fields="name,email,picture"
             onClick={() => console.warn('Hello you got clicked')}
@@ -155,18 +155,24 @@ export default () => {
             );
             setAdAccount([]);
             setPage(pages);
+            // Pages need to look like this
+            // [
+            //     { id: 1, name: 'Kittys Page 1' },
+            //     { id: 1, name: 'Kittys Page 2' },
+            //     { id: 1, name: 'Kittys Page 3' },
+            // ]
         } catch (err) {
             console.warn('Could not fetch pages')
         }
 
         // Debugger
-        selectAdAccount(adAccountId);
-        setAdAccount([]);
-        setPage([
-            { id: 1, name: 'Kittys Page 1' },
-            { id: 1, name: 'Kittys Page 2' },
-            { id: 1, name: 'Kittys Page 3' },
-        ]);
+        // selectAdAccount(adAccountId);
+        // setAdAccount([]);
+        // setPage([
+        //     { id: 1, name: 'Kittys Page 1' },
+        //     { id: 1, name: 'Kittys Page 2' },
+        //     { id: 1, name: 'Kittys Page 3' },
+        // ]);
     };
 
     const choosePage = async pageId => {
@@ -182,12 +188,12 @@ export default () => {
         }
 
         // Debugger
-        setSuccess(true);
-        console.warn({
-            ...localStorage,
-            selectedPage: pageId,
-            selectedAdAccount
-        })
+        // setSuccess(true);
+        // console.warn({
+        //     ...localStorage,
+        //     selectedPage: pageId,
+        //     selectedAdAccount
+        // })
     };
 
     useEffect(() => {
@@ -300,6 +306,8 @@ export default () => {
                 width: 100%;
                 box-sizing: border-box;
                 padding: 11px 14px;
+                height: 40px;
+                font-size: 16px;
                 -webkit-border-radius: 4px;
                 -moz-border-radius: 4px;
                 border-radius: 4px;
@@ -536,6 +544,13 @@ export default () => {
                 bottom: -8px;
                 left: -25px;
             }
+
+            .text-elli {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                padding-right: 10px;
+            }
         `}</style>
 
             <Modal
@@ -558,7 +573,7 @@ export default () => {
                                 <ul>
                                     {adAccount.map(account => (
                                         <li>
-                                            <div>{account.name}</div>
+                                            <div className="text-elli">{account.name}</div>
                                             <button onClick={async () => {
                                                 await chooseAdAccount(account.id);
                                                 setStage(2);
@@ -578,7 +593,7 @@ export default () => {
                                 <ul>
                                     {page.map(account => (
                                         <li>
-                                            <div>{account.name}</div>
+                                            <div className="text-elli">{account.name}</div>
                                             <button onClick={async () => {
                                                 await choosePage(account.id);
                                                 toggleModal(false);
