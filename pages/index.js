@@ -155,7 +155,7 @@ export default () => {
             );
             setAdAccount([]);
             setPage(pages);
-            // Pages need to look like this
+            // Pages need to look like this!
             // [
             //     { id: 1, name: 'Kittys Page 1' },
             //     { id: 1, name: 'Kittys Page 2' },

@@ -2,6 +2,7 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const compression = require('compression');
 const cors = require('cors');
 const path = require('path');
 const next = require('next');
@@ -49,6 +50,7 @@ if (!DEV && cluster.isMaster) {
 
             // Middleware
             app.use(cors());
+            app.use(compression());
             app.use(bodyParser.urlencoded({ extended: true }));
             app.use(bodyParser.json());
 
