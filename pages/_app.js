@@ -23,11 +23,11 @@ class MyApp extends App {
                     <title>Kittys</title>
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
                     <meta name="description" content="An agency that creates strategies that embrace what makes social marketing unique. With billions of impressions to his name, you won’t find many Facebook marketers with a greater depth of experience and insight."/>
-                    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" />
+                    {/*<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" />*/}
                 </Head>
                 <style jsx global>{`
                     body {
-                        font-family: 'Lato', sans-serif;
+                        // font-family: 'Lato', sans-serif;
                         max-width: 450px;
                         width: 100%;
                         margin: 0 auto;
