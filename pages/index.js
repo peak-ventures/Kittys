@@ -19,7 +19,9 @@ const modalStyles = {
         right: 'auto',
         bottom: 'auto',
         marginRight: '-50%',
-        transform: 'translate(-50%, -50%)'
+        transform: 'translate(-50%, -50%)',
+        width: '100%',
+        maxWidth: '300px'
     }
 };
 
@@ -300,6 +302,8 @@ export default () => {
                 width: 100%;
                 box-sizing: border-box;
                 padding: 11px 14px;
+                height: 40px;
+                font-size: 16px;
                 -webkit-border-radius: 4px;
                 -moz-border-radius: 4px;
                 border-radius: 4px;
@@ -536,6 +540,13 @@ export default () => {
                 bottom: -8px;
                 left: -25px;
             }
+
+            .text-elli {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                padding-right: 10px;
+            }
         `}</style>
 
             <Modal
@@ -558,7 +569,7 @@ export default () => {
                                 <ul>
                                     {adAccount.map(account => (
                                         <li>
-                                            <div>{account.name}</div>
+                                            <div className="text-elli">{account.name}</div>
                                             <button onClick={async () => {
                                                 await chooseAdAccount(account.id);
                                                 setStage(2);
@@ -578,7 +589,7 @@ export default () => {
                                 <ul>
                                     {page.map(account => (
                                         <li>
-                                            <div>{account.name}</div>
+                                            <div className="text-elli">{account.name}</div>
                                             <button onClick={async () => {
                                                 await choosePage(account.id);
                                                 toggleModal(false);
