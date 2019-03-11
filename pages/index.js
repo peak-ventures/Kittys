@@ -146,9 +146,9 @@ export default () => {
     const [modal, toggleModal] = useState(false);
     const [success, setSuccess] = useState(false);
 
-    const chooseAdAccount = async adAccountId => {
+    const chooseAdAccount = async adAccount => {
         try {
-            selectAdAccount(adAccountId);
+            selectAdAccount(adAccount);
             const pages = await getPages(
                 localStorage.getItem('email'),
                 localStorage.getItem('token')
@@ -175,11 +175,11 @@ export default () => {
         // ]);
     };
 
-    const choosePage = async pageId => {
+    const choosePage = async page => {
         try {
             await savePage({
                 ...localStorage,
-                selectedPage: pageId,
+                page,
                 selectedAdAccount
             });
             setSuccess(true);
@@ -575,7 +575,7 @@ export default () => {
                                         <li>
                                             <div className="text-elli">{account.name}</div>
                                             <button onClick={async () => {
-                                                await chooseAdAccount(account.id);
+                                                await chooseAdAccount(account);
                                                 setStage(2);
                                             }}>Select</button>
                                         </li>
@@ -595,7 +595,7 @@ export default () => {
                                         <li>
                                             <div className="text-elli">{account.name}</div>
                                             <button onClick={async () => {
-                                                await choosePage(account.id);
+                                                await choosePage(account);
                                                 toggleModal(false);
                                             }}>Select</button>
                                         </li>

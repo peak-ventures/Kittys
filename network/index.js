@@ -30,6 +30,7 @@ export const getPages = async (email, token) => {
             url: '/v1/facebook/pages?email=' + email + '&token=' + token,
             method: 'GET'
         });
+        return data;
     } catch (error) {
         throw new Error('There was an unexpected error. Please try again shortly')
     }
