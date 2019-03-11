@@ -82,12 +82,6 @@ const DashedUnderline = () => (
 );
 
 const FacebookAuthButton = ({ setAdAccount }) => {
-    const [init, setInit] = useState(false);
-    const [config, setConfig] = useState({
-        appId: '',
-        scope: ''
-    });
-
     const facebookResponse = async response => {
         try {
             // Store in localStorage
@@ -106,18 +100,6 @@ const FacebookAuthButton = ({ setAdAccount }) => {
             console.warn('Could not fetch ad accounts')
         }
     };
-
-    const fetch = async () => {
-        const { appId, scope } = await getConfig();
-        setConfig({ appId, scope })
-    };
-
-    useEffect(() => {
-        if (!init) {
-            fetch();
-            setInit(true);
-        }
-    });
 
     return (
         <FacebookLogin
