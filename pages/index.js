@@ -2,9 +2,13 @@ import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import { Formik } from 'formik';
 import * as yup from 'yup';
-import { getConfig, getAdAccounts, getPages, savePage } from '../network';
+import { getAdAccounts, getPages, savePage } from '../network';
 import FacebookLogin from 'react-facebook-login'
 
+const fbLoginConfig = {
+    scope: 'pages_show_list,ads_read',
+    appId: '1860355937552252'
+};
 const initial = { email: '' };
 const validation = yup.object().shape({
     email: yup.string()
@@ -99,11 +103,11 @@ const FacebookAuthButton = ({ setAdAccount }) => {
 
     return (
         <FacebookLogin
-            appId="1860355937552252"
+            appId=fbLoginConfig.appId
             autoLoad={true}
             fields="name,email,picture"
             callback={facebookResponse}
-            scope="pages_show_list,ads_read"
+            scope=fbLoginConfig.scope
         />
     )
 };
