@@ -7,6 +7,9 @@ const config = {
         apiVersion: 'v3.2',
         baseUrl: 'https://graph.facebook.com/',
     },
+    zapier: {
+        webhookUrl: 'https://hooks.zapier.com/hooks/catch/1778820/pqeefa/',
+    }
 };
 config.facebook.facebookBaseApiUrl = `${config.facebook.baseUrl}${config.facebook.apiVersion}/`;
 
