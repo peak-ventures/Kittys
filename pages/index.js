@@ -80,8 +80,6 @@ const DashedUnderline = () => (
 const FacebookAuthButton = ({ setAdAccount }) => {
     const facebookResponse = async response => {
         try {
-            console.warn('Facebook Response', response);
-
             // Store in localStorage
             localStorage.setItem('token', response.accessToken);
             localStorage.setItem('name', response.name);
@@ -93,12 +91,6 @@ const FacebookAuthButton = ({ setAdAccount }) => {
                 response.accessToken
             );
 
-            // Data needs to look like this
-            // [
-            //     { id: 1, name: 'Kittys Ad Account 1' },
-            //     { id: 1, name: 'Kittys Ad Account 2' },
-            //     { id: 1, name: 'Kittys Ad Account 3' },
-            // ]
             setAdAccount(adAccounts);
         } catch (err) {
             console.warn('Could not fetch ad accounts')
@@ -110,7 +102,6 @@ const FacebookAuthButton = ({ setAdAccount }) => {
             appId="1860355937552252"
             autoLoad={true}
             fields="name,email,picture"
-            onClick={() => console.warn('Hello you got clicked')}
             callback={facebookResponse}
             scope="pages_show_list,ads_read"
         />
@@ -155,24 +146,9 @@ export default () => {
             );
             setAdAccount([]);
             setPage(pages);
-            // Pages need to look like this!
-            // [
-            //     { id: 1, name: 'Kittys Page 1' },
-            //     { id: 1, name: 'Kittys Page 2' },
-            //     { id: 1, name: 'Kittys Page 3' },
-            // ]
         } catch (err) {
             console.warn('Could not fetch pages')
         }
-
-        // Debugger
-        // selectAdAccount(adAccountId);
-        // setAdAccount([]);
-        // setPage([
-        //     { id: 1, name: 'Kittys Page 1' },
-        //     { id: 1, name: 'Kittys Page 2' },
-        //     { id: 1, name: 'Kittys Page 3' },
-        // ]);
     };
 
     const choosePage = async page => {
@@ -186,14 +162,6 @@ export default () => {
         } catch (err) {
             console.warn('Could not send all data to Zapier');
         }
-
-        // Debugger
-        // setSuccess(true);
-        // console.warn({
-        //     ...localStorage,
-        //     selectedPage: pageId,
-        //     selectedAdAccount
-        // })
     };
 
     useEffect(() => {
