@@ -37,20 +37,6 @@ const getPages = async (req, res) => {
     }
 };
 
-const getConfig = (req, res) => {
-    try {
-        const { facebook } = config;
-        const fbConfig = {
-            scope: facebook.scope,
-            appId: facebook.appId,
-            apiVersion: facebook.apiVersion,
-        };
-        return res.status(200).json(fbConfig);
-    } catch (e) {
-        return res.status(400).send('Error getting config');
-    }
-};
-
 const exchangeForNonExpiryToken = async (req, res) => {
     if (!req.query || !req.query.token) {
         return res.status(400).send('Token is required');
@@ -69,6 +55,5 @@ const exchangeForNonExpiryToken = async (req, res) => {
 module.exports = {
     getAdAccounts,
     getPages,
-    getConfig,
     exchangeForNonExpiryToken
 };

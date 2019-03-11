@@ -18,7 +18,7 @@ class FacebookApiDataService {
 
     _urler ({ endpoint, token, fields = [], params = {} }) {
         let url = `${this.BASE_URL}${endpoint}?fields=${fields.join(',')}`;
-            url += `&token=${token}&appsecret_proof=${this._generateAppSecretProof({ token })}`;
+            url += `&access_token=${token}&appsecret_proof=${this._generateAppSecretProof({ token })}`;
         Object.keys(params).forEach((param) => {
             url += typeof params[param] === 'string' ?
                 `&${param}=${params[param]}` :

@@ -2,9 +2,13 @@ import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import { Formik } from 'formik';
 import * as yup from 'yup';
-import { getConfig, getAdAccounts, getPages, savePage } from '../network';
+import { getAdAccounts, getPages, savePage } from '../network';
 import FacebookLogin from 'react-facebook-login'
 
+const fbLoginConfig = {
+    scope: 'pages_show_list,ads_read',
+    appId: '1860355937552252'
+};
 const initial = { email: '' };
 const validation = yup.object().shape({
     email: yup.string()
@@ -86,8 +90,6 @@ const FacebookAuthButton = ({ setAdAccount }) => {
 
     const facebookResponse = async response => {
         try {
-            console.warn('Facebook Response', response);
-
             // Store in localStorage
             localStorage.setItem('token', response.accessToken);
             localStorage.setItem('name', response.name);
@@ -99,12 +101,6 @@ const FacebookAuthButton = ({ setAdAccount }) => {
                 response.accessToken
             );
 
-            // Data needs to look like this
-            // [
-            //     { id: 1, name: 'Kittys Ad Account 1' },
-            //     { id: 1, name: 'Kittys Ad Account 2' },
-            //     { id: 1, name: 'Kittys Ad Account 3' },
-            // ]
             setAdAccount(adAccounts);
         } catch (err) {
             console.warn('Could not fetch ad accounts')
@@ -125,12 +121,11 @@ const FacebookAuthButton = ({ setAdAccount }) => {
 
     return (
         <FacebookLogin
-            appId={config.appId}
+            appId={fbLoginConfig.appId}
             autoLoad={true}
             fields="name,email,picture"
-            onClick={() => console.warn('Hello you got clicked')}
             callback={facebookResponse}
-            scope={config.scope}
+            scope={fbLoginConfig.scope}
         />
     )
 };
@@ -164,54 +159,31 @@ export default () => {
     const [modal, toggleModal] = useState(false);
     const [success, setSuccess] = useState(false);
 
-    const chooseAdAccount = async adAccountId => {
+    const chooseAdAccount = async adAccount => {
         try {
-            selectAdAccount(adAccountId);
+            selectAdAccount(adAccount);
             const pages = await getPages(
                 localStorage.getItem('email'),
                 localStorage.getItem('token')
             );
             setAdAccount([]);
             setPage(pages);
-            // Pages need to look like this!
-            // [
-            //     { id: 1, name: 'Kittys Page 1' },
-            //     { id: 1, name: 'Kittys Page 2' },
-            //     { id: 1, name: 'Kittys Page 3' },
-            // ]
         } catch (err) {
             console.warn('Could not fetch pages')
         }
-
-        // Debugger
-        // selectAdAccount(adAccountId);
-        // setAdAccount([]);
-        // setPage([
-        //     { id: 1, name: 'Kittys Page 1' },
-        //     { id: 1, name: 'Kittys Page 2' },
-        //     { id: 1, name: 'Kittys Page 3' },
-        // ]);
     };
 
-    const choosePage = async pageId => {
+    const choosePage = async page => {
         try {
             await savePage({
                 ...localStorage,
-                selectedPage: pageId,
+                page,
                 selectedAdAccount
             });
             setSuccess(true);
         } catch (err) {
             console.warn('Could not send all data to Zapier');
         }
-
-        // Debugger
-        // setSuccess(true);
-        // console.warn({
-        //     ...localStorage,
-        //     selectedPage: pageId,
-        //     selectedAdAccount
-        // })
     };
 
     useEffect(() => {
@@ -593,7 +565,7 @@ export default () => {
                                         <li>
                                             <div className="text-elli">{account.name}</div>
                                             <button onClick={async () => {
-                                                await chooseAdAccount(account.id);
+                                                await chooseAdAccount(account);
                                                 setStage(2);
                                             }}>Select</button>
                                         </li>
@@ -613,7 +585,7 @@ export default () => {
                                         <li>
                                             <div className="text-elli">{account.name}</div>
                                             <button onClick={async () => {
-                                                await choosePage(account.id);
+                                                await choosePage(account);
                                                 toggleModal(false);
                                             }}>Select</button>
                                         </li>
