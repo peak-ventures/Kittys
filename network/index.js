@@ -3,7 +3,7 @@ import axios from 'axios';
 export const getConfig = async () => {
     try {
         const { data } = await axios({
-            url: 'http://localhost:4000/v1/facebook/config',
+            url: '/v1/facebook/config',
             method: 'GET'
         });
         return data;
